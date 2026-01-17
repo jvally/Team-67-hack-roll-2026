@@ -4,6 +4,7 @@ import { resolve } from "path";
 
 export default defineConfig({
   plugins: [react()],
+  base: './',  // Required for Chrome extensions - use relative paths
   build: {
     outDir: "dist",
     emptyOutDir: true,
