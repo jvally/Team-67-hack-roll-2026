@@ -63,6 +63,7 @@ source venv/bin/activate  # Mac/Linux
 pip install -r requirements.txt
 
 # Create .env file with your OpenAI key
+# Follow Instructions at Environment Variables below as well
 echo "OPENAI_API_KEY=sk-your-key-here" > .env
 
 # Start the server
@@ -192,9 +193,9 @@ npm run build
 
 Create `backend/.env`:
 ```
-OPENAI_API_KEY=sk-your-openai-key-here
-SHEETS_API_URL=your_apps_script_url
-SHEETS_API_TOKEN=your_optional_token
+OPENAI_API_KEY="sk-your-openai-key-here"
+SHEETS_API_URL="your_apps_script_url"
+SHEETS_API_TOKEN="your_optional_token"
 ```
 
 **Never commit `.env` to git!** (It's already in `.gitignore`)
