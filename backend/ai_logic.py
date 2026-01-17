@@ -202,7 +202,28 @@ def analyze_webpage_content(webpage_text: str, troll_level: int = 50) -> dict:
             max_tokens=500
         )
         
-        result = json.loads(response.choices[0].message.content)
+        # Debug: print the full response object
+        print("[DEBUG] OpenAI API raw response:", response)
+        if not hasattr(response, 'choices') or not response.choices:
+            return {
+                "success": False,
+                "error": "No choices returned from OpenAI API. Check your API key, quota, or model access."
+            }
+        content = getattr(response.choices[0].message, 'content', None)
+        if not isinstance(content, str):
+            return {
+                "success": False,
+                "error": "OpenAI API response missing or invalid 'message.content'.",
+                "raw_content": content
+            }
+        try:
+            result = json.loads(content)
+        except Exception as e:
+            return {
+                "success": False,
+                "error": f"Failed to parse AI response as JSON: {str(e)}",
+                "raw_content": content
+            }
         return {
             "success": True,
             "data": result,
