@@ -2,7 +2,8 @@
  * StonkGaze Test UI - JavaScript
  */
 
-const API_BASE = 'http://127.0.0.1:8000';
+// Replace API_BASE with Google Sheets API URL
+const SHEETS_API_URL = 'YOUR_GOOGLE_SHEETS_SCRIPT_URL';
 
 // DOM Elements
 const webpageTextInput = document.getElementById('webpageText');
@@ -41,11 +42,10 @@ async function analyzeText(text) {
         showError('Need at least 50 characters of content, no cap 🙅');
         return;
     }
-
     showLoading();
-
     try {
-        const response = await fetch(`${API_BASE}/analyze`, {
+        // Send to Google Apps Script instead of backend
+        const response = await fetch(SHEETS_API_URL, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -54,13 +54,10 @@ async function analyzeText(text) {
                 webpage_text: text
             })
         });
-
         const data = await response.json();
-
         if (!response.ok) {
             throw new Error(data.detail || 'API request failed');
         }
-
         if (data.success) {
             displayResults(data);
         } else {
@@ -73,15 +70,13 @@ async function analyzeText(text) {
 
 async function runDemo() {
     showLoading();
-
     try {
-        const response = await fetch(`${API_BASE}/analyze/demo`);
+        // Send to Google Apps Script demo endpoint
+        const response = await fetch(SHEETS_API_URL + '?demo=true');
         const data = await response.json();
-
         if (!response.ok) {
             throw new Error(data.detail || 'Demo request failed');
         }
-
         if (data.success) {
             displayResults(data);
         } else {
