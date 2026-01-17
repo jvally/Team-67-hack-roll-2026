@@ -33,12 +33,14 @@ app.add_middleware(
 class AnalysisRequest(BaseModel):
     webpage_text: str
     url: Optional[str] = None
+    troll_level: Optional[int] = 50  # 0-100, default is 50 (Gen Z mode)
 
 
 class AnalysisResponse(BaseModel):
     success: bool
     analysis: Optional[dict] = None
     market_data: Optional[dict] = None
+    troll_level: Optional[int] = None
     error: Optional[str] = None
 
 
@@ -69,6 +71,10 @@ async def analyze_content(request: AnalysisRequest):
     Main endpoint: Analyze webpage content and return stock recommendation.
     
     Takes webpage text, generates AI analysis, and fetches real market data.
+    
+    Args:
+        webpage_text: The text content to analyze
+        troll_level: 0-100 scale. 0=serious/professional, 100=maximum troll
     """
     if not request.webpage_text or len(request.webpage_text.strip()) < 50:
         raise HTTPException(
@@ -76,8 +82,11 @@ async def analyze_content(request: AnalysisRequest):
             detail="Webpage text too short. Need at least 50 characters of content, no cap."
         )
     
-    # Step 1: Get AI analysis
-    ai_result = analyze_webpage_content(request.webpage_text)
+    # Get troll level (default 50)
+    troll_level = request.troll_level if request.troll_level is not None else 50
+    
+    # Step 1: Get AI analysis with troll level
+    ai_result = analyze_webpage_content(request.webpage_text, troll_level)
     
     if not ai_result["success"]:
         return AnalysisResponse(
@@ -88,9 +97,10 @@ async def analyze_content(request: AnalysisRequest):
     analysis_data = ai_result["data"]
     ticker = analysis_data.get("ticker", "")
     asset_type = analysis_data.get("asset_type", "stock")
+    forecast = analysis_data.get("forecast")
     
     # Step 2: Fetch real market data for the ticker
-    market_result = get_ticker_data(ticker, asset_type)
+    market_result = get_ticker_data(ticker, asset_type, forecast=forecast)
     
     if not market_result["success"]:
         # Still return the analysis, just without market data
@@ -98,24 +108,29 @@ async def analyze_content(request: AnalysisRequest):
             success=True,
             analysis=analysis_data,
             market_data=None,
+            troll_level=troll_level,
             error=f"Warning: Could not fetch market data - {market_result.get('error')}"
         )
     
     return AnalysisResponse(
         success=True,
         analysis=analysis_data,
-        market_data=market_result["data"]
+        market_data=market_result["data"],
+        troll_level=troll_level
     )
 
 
 @app.get("/analyze/demo")
-async def demo_analysis():
+async def demo_analysis(troll_level: int = 50):
     """
     Demo endpoint with hardcoded sample input.
     Perfect for testing without the Chrome extension.
+    
+    Args:
+        troll_level: 0-100 scale. 0=serious, 100=maximum troll
     """
     # Use hardcoded sample text
-    ai_result = analyze_webpage_content(SAMPLE_WEBPAGE_TEXT)
+    ai_result = analyze_webpage_content(SAMPLE_WEBPAGE_TEXT, troll_level)
     
     if not ai_result["success"]:
         return {
@@ -135,7 +150,8 @@ async def demo_analysis():
         "success": True,
         "sample_input_preview": SAMPLE_WEBPAGE_TEXT[:200] + "...",
         "analysis": analysis_data,
-        "market_data": market_result.get("data") if market_result["success"] else None
+        "market_data": market_result.get("data") if market_result["success"] else None,
+        "troll_level": troll_level
     }
 
 
