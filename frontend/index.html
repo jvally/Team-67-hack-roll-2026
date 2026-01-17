@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StonkGaze - Test UI</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1 class="logo">
+                <span class="logo-icon">📈</span>
+                STONKGAZE
+            </h1>
+            <p class="tagline">The most unhinged financial advisor. No cap.</p>
+        </header>
+
+        <!-- Input Section -->
+        <section class="input-section">
+            <h2>🔍 Paste Webpage Content</h2>
+            <textarea id="webpageText"
+                placeholder="Paste some text from any webpage and watch the AI find 'alpha' in it..."
+                rows="6">Breaking News: Massive Rainfall Expected Across Singapore This Weekend
+
+The Meteorological Service Singapore (MSS) has issued a weather advisory warning residents of heavy thunderstorms and potential flash floods. The wet weather is expected to persist through Sunday, with some areas receiving up to 100mm of rainfall.
+
+Commuters are advised to plan their journeys carefully and consider alternative transportation. Several outdoor events have been cancelled or postponed due to the weather conditions.
+
+Local umbrella retailers report a 300% surge in sales as Singaporeans rush to prepare for the incoming storms. Food delivery services are also seeing increased demand as people prefer to stay indoors.</textarea>
+
+            <div class="button-group">
+                <button id="analyzeBtn" class="btn btn-primary">
+                    🚀 Get the Alpha
+                </button>
+                <button id="demoBtn" class="btn btn-secondary">
+                    🎲 Run Demo
+                </button>
+            </div>
+        </section>
+
+        <!-- Loading State -->
+        <div id="loading" class="loading hidden">
+            <div class="spinner"></div>
+            <p>Finding the alpha fr fr...</p>
+        </div>
+
+        <!-- Results Section -->
+        <section id="results" class="results hidden">
+            <!-- Ticker Display -->
+            <div class="ticker-display">
+                <span id="tickerAction" class="action-badge">BUY</span>
+                <h2 id="tickerSymbol" class="ticker-symbol">$AAPL</h2>
+                <p id="tickerName" class="ticker-name">Apple Inc.</p>
+            </div>
+
+            <!-- Vibe Meter -->
+            <div class="vibe-meter">
+                <div id="vibeMeter" class="vibe-bar">
+                    <div id="vibeIndicator" class="vibe-indicator"></div>
+                </div>
+                <div class="vibe-labels">
+                    <span class="vibe-label-left">🔻 COOKED</span>
+                    <span id="vibeText" class="vibe-text">MOONING 🚀</span>
+                    <span class="vibe-label-right">MOONING 🚀</span>
+                </div>
+            </div>
+
+            <!-- Confidence -->
+            <div class="confidence-section">
+                <div class="confidence-header">
+                    <span>Confidence Level</span>
+                    <span id="confidenceValue">87%</span>
+                </div>
+                <div class="confidence-bar">
+                    <div id="confidenceProgress" class="confidence-progress"></div>
+                </div>
+            </div>
+
+            <!-- Key Insight -->
+            <div class="insight-section">
+                <h3>🔗 Key Insight</h3>
+                <p id="keyInsight" class="insight-text">Loading...</p>
+            </div>
+
+            <!-- Reasoning -->
+            <div class="reasoning-section">
+                <h3>💡 The Alpha (Trust)</h3>
+                <p id="reasoning" class="reasoning-text">Loading...</p>
+                <div class="meme-caption" id="memeCaption">
+                    "Secure the bag while they're soaking wet no cap"
+                </div>
+            </div>
+
+            <!-- Market Data -->
+            <div id="marketData" class="market-data">
+                <h3>📊 Market Data</h3>
+                <div class="market-grid">
+                    <div class="market-item">
+                        <span class="market-label">Current Price</span>
+                        <span id="currentPrice" class="market-value">$0.00</span>
+                    </div>
+                    <div class="market-item">
+                        <span class="market-label">24h Change</span>
+                        <span id="priceChange" class="market-value change-positive">+0.00%</span>
+                    </div>
+                    <div class="market-item">
+                        <span class="market-label">Volume</span>
+                        <span id="volume" class="market-value">0</span>
+                    </div>
+                    <div class="market-item">
+                        <span class="market-label">Market Cap</span>
+                        <span id="marketCap" class="market-value">$0</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Raw JSON Toggle -->
+            <details class="json-section">
+                <summary>🔧 View Raw JSON Response</summary>
+                <pre id="jsonOutput"></pre>
+            </details>
+        </section>
+
+        <!-- Error Display -->
+        <div id="error" class="error hidden">
+            <p id="errorMessage">Something went wrong fr fr</p>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
