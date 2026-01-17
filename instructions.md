@@ -57,10 +57,20 @@ StonkGaze is a **Chrome Extension** that transforms any webpage into a wild, far
 - **The Vibe Check:** A color-coded sentiment bar (Neon Green for "Mooning," Neon Red for "It's Over").
 - **The Chart:** A line chart showing the last 24h of price action, overlaid with random emojis (🚀, 💎, 📉).
 - **Meme Box:** A dedicated area for a randomly selected "Stonk" meme.
+- **Paper Trading Controls:** Buy/Sell buttons for the recommended ticker, portfolio value display, and transaction history log.
 
 ### 3. Automated Triggers
 
 The extension should refresh its analysis every time the user navigates to a new URL or clicks a **"Vibe Check"** button.
+
+### 4. Paper Trading Simulation
+
+- **Virtual Portfolio:** Start users with a simulated balance (e.g., $10,000) to practice trading without real money.
+- **Buy/Sell Actions:** Add buttons in the Side Panel to "buy" or "sell" the recommended ticker at current market price.
+- **Portfolio Tracking:** Display current holdings, total portfolio value, and P&L (profit/loss) percentage.
+- **Transaction History:** Keep a log of all simulated trades with timestamps and reasoning.
+- **Risk-Free Learning:** Use this feature to educate users about market timing and the AI's "predictions" without financial risk.
+- **Data Persistence:** Store portfolio data locally in browser storage so it persists across sessions.
 
 ---
 
