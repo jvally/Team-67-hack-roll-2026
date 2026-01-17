@@ -1,3 +1,3 @@
 # Team-67-hack-roll-2026
-Hack and roll project:
-Hackathon Project by Team 67
+
+Hack and roll project: Hackathon Project by Team 67
