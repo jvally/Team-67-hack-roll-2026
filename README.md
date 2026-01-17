@@ -193,9 +193,23 @@ npm run build
 Create `backend/.env`:
 ```
 OPENAI_API_KEY=sk-your-openai-key-here
+SHEETS_API_URL=your_apps_script_url
+SHEETS_API_TOKEN=your_optional_token
 ```
 
 **Never commit `.env` to git!** (It's already in `.gitignore`)
+
+### Google Sheets Portfolio Backend
+
+If you are using the Google Sheets portfolio database (Apps Script Web App), set:
+
+```
+SHEETS_API_URL=your_apps_script_url
+SHEETS_API_TOKEN=your_optional_token
+```
+
+- `SHEETS_API_URL` is the Web App URL from your Apps Script deployment.
+- `SHEETS_API_TOKEN` should match `API_TOKEN` in the Apps Script file (leave empty if not used).
 
 ---
 
