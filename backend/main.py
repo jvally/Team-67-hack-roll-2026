@@ -11,6 +11,7 @@ import json
 
 from ai_logic import analyze_webpage_content, SAMPLE_WEBPAGE_TEXT
 from finance import get_ticker_data, validate_ticker
+from portfolio_store import init_user, get_portfolio, trade, leaderboard
 
 
 app = FastAPI(
@@ -43,6 +44,18 @@ class AnalysisResponse(BaseModel):
     troll_level: Optional[int] = None
     error: Optional[str] = None
 
+class InitUserRequest(BaseModel):
+    user_id: str
+    username: str
+
+
+class TradeRequest(BaseModel):
+    user_id: str
+    ticker: str
+    side: str
+    qty: float
+    price: float
+
 
 # API Endpoints
 @app.get("/")
@@ -50,7 +63,7 @@ async def root():
     """Health check endpoint"""
     return {
         "status": "vibing",
-        "message": "StonkGaze API is running fr fr 🚀",
+        "message": "StonkGaze API is running fr fr ????",
         "version": "1.0.0"
     }
 
@@ -172,7 +185,27 @@ async def get_ticker_info(ticker: str, asset_type: str = "stock"):
     return result
 
 
+
+@app.post("/portfolio/init")
+async def portfolio_init(request: InitUserRequest):
+    return init_user(request.user_id, request.username)
+
+
+@app.get("/portfolio/{user_id}")
+async def portfolio_get(user_id: str):
+    return get_portfolio(user_id)
+
+
+@app.post("/portfolio/trade")
+async def portfolio_trade(request: TradeRequest):
+    return trade(request.user_id, request.ticker, request.side, request.qty, request.price)
+
+
+@app.get("/portfolio/leaderboard")
+async def portfolio_leaderboard(limit: int = 10):
+    return leaderboard(limit)
 # Run with: uvicorn main:app --reload
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=8000)
+
