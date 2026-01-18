@@ -15,7 +15,7 @@ from portfolio_store import init_user, get_portfolio, trade, leaderboard
 
 
 app = FastAPI(
-    title="StonkGaze API",
+    title="RobbingHood API",
     description="The most unhinged financial advisor in your browser. No cap.",
     version="1.0.0"
 )

@@ -1,24 +1,36 @@
 ﻿{
   "manifest_version": 3,
-  "name": "StonkGaze",
+  "name": "RobbingHood",
   "version": "0.1.0",
   "description": "The most unhinged financial advisor in your browser.",
   "action": {
-    "default_title": "StonkGaze"
+    "default_title": "RobbingHood"
   },
   "side_panel": {
     "default_path": "sidepanel.html"
   },
-  "permissions": ["activeTab", "tabs", "storage", "scripting", "sidePanel"],
-  "host_permissions": ["<all_urls>"],
+  "permissions": [
+    "activeTab",
+    "tabs",
+    "storage",
+    "scripting",
+    "sidePanel"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
   "background": {
     "service_worker": "background.js",
     "type": "module"
   },
   "content_scripts": [
     {
-      "matches": ["<all_urls>"],
-      "js": ["content.js"],
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "content.js"
+      ],
       "run_at": "document_end"
     }
   ]

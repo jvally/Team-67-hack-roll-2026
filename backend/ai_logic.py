@@ -192,7 +192,7 @@ def analyze_webpage_content(webpage_text: str, troll_level: int = 50) -> dict:
     
     try:
         response = client.chat.completions.create(
-            model="gpt-4o-mini",
+            model="gpt-4o",
             messages=[
                 {"role": "system", "content": system_prompt},
                 {"role": "user", "content": f"Analyze this webpage content and give me the alpha:\n\n{webpage_text[:4000]}"}

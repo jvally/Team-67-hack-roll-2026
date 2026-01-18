@@ -1,6 +1,6 @@
 # 📝 INSTRUCTIONS.md
 
-## 🚀 Project Name: StonkGaze
+## 🚀 Project Name: RobbingHood
 
 **Tagline:** The most unhinged financial advisor in your browser. No cap.
 

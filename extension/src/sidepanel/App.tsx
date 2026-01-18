@@ -185,7 +185,7 @@ export default function App() {
   const [tradeTicker, setTradeTicker] = useState('');
   const [tradePrice, setTradePrice] = useState(0);
   const [tradeShares, setTradeShares] = useState(1);
-  const [tradeType, setTradeType] = useState<'BUY'|'SELL'>('BUY');
+  const [tradeType, setTradeType] = useState<'BUY' | 'SELL'>('BUY');
   const [tradeError, setTradeError] = useState('');
 
   useEffect(() => {
@@ -322,7 +322,31 @@ export default function App() {
       }
     }
     newTrades.unshift({ type: tradeType, ticker: tradeTicker, shares: tradeShares, price: tradePrice, timestamp: new Date().toISOString() });
+    newTrades.unshift({ type: tradeType, ticker: tradeTicker, shares: tradeShares, price: tradePrice, timestamp: new Date().toISOString() });
     setPortfolio({ cash: newCash, holdings: newHoldings, trades: newTrades });
+
+    // Play sound based on trade type (Randomized)
+    const buySounds = ['sounds/buy.mp3', 'sounds/moon.mp3'];
+    const sellSounds = ['sounds/sell.mp3', 'sounds/diamond.mp3'];
+
+    // 30% chance of meme sound
+    const isMeme = Math.random() > 0.7;
+    const soundFile = tradeType === 'BUY'
+      ? (isMeme ? buySounds[1] : buySounds[0])
+      : (isMeme ? sellSounds[1] : sellSounds[0]);
+
+    try {
+      if (typeof chrome !== 'undefined' && chrome.runtime?.getURL) {
+        const audio = new Audio(chrome.runtime.getURL(soundFile));
+        audio.play().catch(e => console.error("Audio play failed", e));
+      } else {
+        // Fallback for dev/web
+        const audio = new Audio(soundFile);
+        audio.play().catch(e => console.error("Audio play failed", e));
+      }
+    } catch (e) {
+      console.error("Audio setup failed", e);
+    }
   }
 
   return (
@@ -332,7 +356,7 @@ export default function App() {
         <header className="flex items-center justify-between">
           <div>
             <p className="text-xs uppercase tracking-[0.35em] text-slate-600">
-              StonkGaze
+              ROBBINGHOOD
             </p>
             <h1 className="font-['Rubik_Mono_One'] text-2xl tracking-tight text-ink">
               The Schizo-Analysis
