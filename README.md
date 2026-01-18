@@ -1,4 +1,4 @@
-# 📈 StonkGaze
+# 📈 RobbingHood
 
 **The most unhinged financial advisor in your browser. No cap.**
 
@@ -8,7 +8,7 @@ A Chrome Extension that finds "investment alpha" in any webpage you visit by usi
 
 ## 🎯 What Does It Do?
 
-When you browse any webpage (news, tweets, blogs), StonkGaze:
+When you browse any webpage (news, tweets, blogs), RobbingHood:
 1. **Scrapes the text** from the page
 2. **Sends it to an AI backend** (GPT-4o)
 3. **Returns a stock/crypto recommendation** with clear reasoning
@@ -104,7 +104,7 @@ cp manifest.json dist/
 
 1. Make sure the **backend is running** (http://localhost:8000)
 2. Navigate to any webpage
-3. **Click the StonkGaze extension icon** → Open side panel
+3. **Click the RobbingHood extension icon** → Open side panel
 4. Watch the AI analyze the page and recommend a stock!
 
 **Buttons:**
