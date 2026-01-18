@@ -10,7 +10,7 @@ A Chrome Extension that finds "investment alpha" in any webpage you visit by usi
 
 When you browse any webpage (news, tweets, blogs), RobbingHood:
 1. **Scrapes the text** from the page
-2. **Sends it to an AI backend** (GPT-4o)
+2. **Sends it to an AI backend** (GPT-5-mini)
 3. **Returns a stock/crypto recommendation** with clear reasoning
 
 **Example:** Visit a weather article about rain → Get a recommendation for $UBER (people need rides when it rains!)
@@ -157,7 +157,7 @@ curl -X POST http://localhost:8000/analyze \
 | Component | Technology |
 |-----------|------------|
 | Backend | Python 3.10+, FastAPI, Uvicorn |
-| AI | OpenAI GPT-4o-mini |
+| AI | OpenAI GPT-5o-mini |
 | Market Data | yfinance |
 | Extension | React 18, TypeScript, Vite |
 | Styling | Tailwind CSS |
