@@ -8,7 +8,7 @@
 
 ## 📌 Project Overview
 
-StonkGaze is a **Chrome Extension** that transforms any webpage into a wild, far-fetched financial investment opportunity. Using a persistent **Side Panel UI**, it scrapes content from the user's active tab, uses AI to make "schizo-logical" leaps to a stock or crypto ticker, and presents the "Alpha" using Gen Z slang, memes, and technical-looking (but meaningless) charts.
+RobbingHood is a **Chrome Extension** that transforms any webpage into a wild, far-fetched financial investment opportunity. Using a persistent **Side Panel UI**, it scrapes content from the user's active tab, uses AI to make "schizo-logical" leaps to a stock or crypto ticker, and presents the "Alpha" using Gen Z slang, memes, and technical-looking (but meaningless) charts.
 
 ---
 
@@ -77,7 +77,7 @@ The extension should refresh its analysis every time the user navigates to a new
 ## 📂 Repository Structure
 
 ```
-/stonkgaze-root
+/RobbingHood-root
 ├── /extension            # React + Vite + Tailwind
 │   ├── manifest.json     # Chrome Extension Config
 │   ├── /src

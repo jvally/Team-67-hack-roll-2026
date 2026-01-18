@@ -1,5 +1,5 @@
 /**
- * StonkGaze Test UI - JavaScript
+ * RobbingHood Test UI - JavaScript
  */
 
 // Replace API_BASE with Google Sheets API URL
@@ -179,4 +179,4 @@ function formatNumber(num, isCurrency = false) {
 }
 
 // Initial state
-console.log('🚀 StonkGaze Test UI loaded. Ready to find alpha fr fr.');
+console.log('🚀 RobbingHood Test UI loaded. Ready to find alpha fr fr.');

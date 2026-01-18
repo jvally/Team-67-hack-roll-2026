@@ -1,5 +1,5 @@
 """
-StonkGaze FastAPI Backend
+RobbingHood FastAPI Backend
 The most unhinged financial advisor API
 """
 
@@ -63,7 +63,7 @@ async def root():
     """Health check endpoint"""
     return {
         "status": "vibing",
-        "message": "StonkGaze API is running fr fr ????",
+        "message": "RobbingHood API is running fr fr ????",
         "version": "1.0.0"
     }
 

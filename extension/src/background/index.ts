@@ -7,7 +7,7 @@ let analysisTimeout: ReturnType<typeof setTimeout> | null = null;
 let currentTrollLevel = 50;
 
 chrome.runtime.onInstalled.addListener(() => {
-  console.log("StonkGaze background ready - connected to backend at", API_BASE);
+  console.log("RobbingHood background ready - connected to backend at", API_BASE);
 });
 
 chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {

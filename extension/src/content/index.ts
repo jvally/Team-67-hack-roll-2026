@@ -7,7 +7,7 @@ const sendSnapshot = () => {
 
   // Debounce: skip if sent recently
   if (now - lastSentTime < DEBOUNCE_MS) {
-    console.log("StonkGaze: Skipping duplicate snapshot");
+    console.log("RobbingHood: Skipping duplicate snapshot");
     return;
   }
 

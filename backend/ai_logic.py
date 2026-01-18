@@ -1,5 +1,5 @@
 """
-StonkGaze AI Logic Module
+RobbingHood AI Logic Module
 Handles OpenAI API calls for the "Schizo-Analysis" Engine
 """
 
@@ -199,7 +199,7 @@ def analyze_webpage_content(webpage_text: str, troll_level: int = 50) -> dict:
             ],
             response_format={"type": "json_object"},
             temperature=temperature,
-            max_tokens=500
+            max_completion_tokens=500
         )
         
         # Debug: print the full response object

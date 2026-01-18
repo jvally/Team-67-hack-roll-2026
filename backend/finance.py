@@ -1,5 +1,5 @@
 """
-StonkGaze Finance Module
+RobbingHood Finance Module
 Handles market data fetching via yfinance with retry logic
 """
 

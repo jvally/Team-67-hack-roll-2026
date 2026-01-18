@@ -136,7 +136,7 @@ interface Trade {
 }
 
 // Portfolio State Helpers
-const LS_KEY = 'stonkgaze-portfolio-v1';
+const LS_KEY = 'RobbingHood-portfolio-v1';
 function loadPortfolio() {
   try {
     return JSON.parse(localStorage.getItem(LS_KEY) || '') || {
