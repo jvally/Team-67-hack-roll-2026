@@ -20,7 +20,7 @@ StonkGaze is a **Chrome Extension** that transforms any webpage into a wild, far
 | Charts          | Chart.js / Recharts                         |
 | Extension API   | Manifest V3 (Side Panel API)                |
 | Backend         | Python 3.10+, FastAPI                       |
-| AI Engine       | OpenAI API (GPT-4o / GPT-4o-mini)           |
+| AI Engine       | OpenAI API (GPT-5o / GPT-5o-mini)           |
 | Market Data     | Alpha Vantage / Yahoo Finance (via yfinance)|
 
 ---
